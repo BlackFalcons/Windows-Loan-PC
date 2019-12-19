@@ -1,21 +1,21 @@
 #Requires -RunAsAdministrator
 
 # Basic config.
-$username = "TUM Utlån"
+$username = "Test"
 $password = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
 $description = "User for borrowing"
+
 
 # Advanced config.
 $check = Get-LocalUser | Where-Object {$_.name -eq $username}
 $language = Get-Culture | select -ExpandProperty "Name"
 
+
 # Bad scripting, should not rely on language.
 if ($language -eq "en-US")
 {
     $group = "Users"
-}
-else
-{
+} else {
     $group = "Brukere"
 }
 
