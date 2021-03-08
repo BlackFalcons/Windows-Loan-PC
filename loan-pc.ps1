@@ -7,7 +7,7 @@ $description = "User for borrowing"
 
 
 # Advanced config.
-$check = Get-LocalUser | Where-Object {$_.name -eq $username}
+$localUserExist = Get-LocalUser | Where-Object {$_.name -eq $username}
 $language = Get-Culture | select -ExpandProperty "Name"
 
 
@@ -19,7 +19,7 @@ if ($language -eq "en-US")
     $group = "Brukere"
 }
 
-if ($check)
+if ($localUserExist)
 {
     Remove-LocalUser -Name $username
 }
